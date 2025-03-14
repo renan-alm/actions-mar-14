@@ -1,0 +1,28 @@
+name: My demo
+on:
+  push:
+    branches: 
+      - "main**"
+      - "master**"
+  pull_request:
+    branches: 
+      - "main"
+  workflow_dispatch:
+  schedule:
+    - cron: "15 6 * * 0"
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display Event
+        run: |
+          echo "{{ github.event_name }}"
+
+      - name: name of the branch
+        run: echo "{{ github.ref }}"
+
+      - name: List all files in the repository
+        run: tree
+      
+        
